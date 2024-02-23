@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk5nstd682w7y"]
+
+[ext_resource type="Script" path="res://Scripts/DecksManager.gd" id="1_ybpa4"]
+
+[node name="Decks Manager" type="Node"]
+script = ExtResource("1_ybpa4")
+deckJ2 = [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]

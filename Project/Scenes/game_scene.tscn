@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://ce04nh6cpfvol"]
+[gd_scene load_steps=2 format=3 uid="uid://ce04nh6cpfvol"]
+
+[ext_resource type="PackedScene" uid="uid://dk5nstd682w7y" path="res://Objects/decks_manager.tscn" id="1_vn6wu"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Decks Manager" parent="." instance=ExtResource("1_vn6wu")]
+deckJ1 = [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
