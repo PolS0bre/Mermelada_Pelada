@@ -4,4 +4,5 @@
 
 [node name="Decks Manager" type="Node"]
 script = ExtResource("1_ybpa4")
+deckJ1 = null
 deckJ2 = [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
