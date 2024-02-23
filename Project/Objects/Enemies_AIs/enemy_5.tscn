@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cimlxjy7o3b0b"]
+
+[node name="Enemy_1" type="CharacterBody2D"]

@@ -1,3 +1,26 @@
-[gd_scene format=3 uid="uid://ce04nh6cpfvol"]
+[gd_scene load_steps=4 format=3 uid="uid://ce04nh6cpfvol"]
+
+[ext_resource type="PackedScene" uid="uid://c6x7cuf61nf6y" path="res://Objects/Enemies_AIs/enemy_1.tscn" id="1_4urwm"]
+[ext_resource type="PackedScene" uid="uid://r6vx2nlatiue" path="res://Objects/Enemies_AIs/enemy_2.tscn" id="2_drj1u"]
+[ext_resource type="Script" path="res://Objects/Enemies_AIs/enemy_speedster.gd" id="3_5oir3"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Enemy_1" parent="." instance=ExtResource("1_4urwm")]
+position = Vector2(132, 115)
+Name = "Tank 1"
+team = true
+
+[node name="Enemy_2" parent="." instance=ExtResource("1_4urwm")]
+position = Vector2(249, 492)
+Name = "Tank  2"
+
+[node name="Enemy_3" parent="." instance=ExtResource("1_4urwm")]
+position = Vector2(926, 458)
+Name = "Tank  3"
+
+[node name="Enemy_4" parent="." instance=ExtResource("2_drj1u")]
+position = Vector2(721, 48)
+script = ExtResource("3_5oir3")
+Name = "Speed 1"
+team = true
