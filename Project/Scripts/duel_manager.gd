@@ -7,8 +7,11 @@ var Team2 = []
 @onready var Team1_Shader = preload("res://Shaders/Team1.gdshader")
 @onready var Team2_Shader = preload("res://Shaders/Team2.gdshader")
 
+@onready var CardMode_Manager = $"../Decks Manager"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$"../AnimationPlayer".play("DuelBG")
 	enemies = get_tree().get_nodes_in_group("Enemy")
 	
 	for monster in enemies:
@@ -28,5 +31,22 @@ func _ready():
 func _process(delta):
 	if Team1.size() == 0:
 		print("Team 2 WINS")
+		
+		var resta_peces = get_tree().get_nodes_in_group("Enemy")
+		for pez in resta_peces:
+			pez.queue_free()
+		
+		enemies.clear()
+		Team1.clear()
+		Team2.clear()
+		
 	elif Team2.size() == 0:
 		print("Team 1 WINS")
+		
+		var resta_peces = get_tree().get_nodes_in_group("Enemy")
+		for pez in resta_peces:
+			pez.queue_free()
+		
+		enemies.clear()
+		Team1.clear()
+		Team2.clear()

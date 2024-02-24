@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8om77egd66nv"]
+[gd_scene load_steps=3 format=3 uid="uid://b8om77egd66nv"]
 
-[ext_resource type="Script" path="res://Scripts/cursor.gd" id="1_gmng1"]
 [ext_resource type="Texture2D" uid="uid://dgad68nh6f2qc" path="res://Sprites/Cursor_Beta.png" id="2_3b4h8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1o440"]
+size = Vector2(42, 46)
 
 [node name="Cursor" type="CharacterBody2D"]
-script = ExtResource("1_gmng1")
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1o440")
@@ -14,3 +15,8 @@ shape = SubResource("RectangleShape2D_1o440")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_3b4h8")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 63)
+target_position = Vector2(0, -100)
+collide_with_areas = true

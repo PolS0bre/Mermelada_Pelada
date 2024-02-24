@@ -1,120 +1,184 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcjv24njoyjpo"]
+[gd_scene load_steps=14 format=3 uid="uid://bcjv24njoyjpo"]
 
+[ext_resource type="Texture2D" uid="uid://diuinhfa5fpm0" path="res://Sprites/ArenaMarina-Sheet.png" id="1_1xfuo"]
 [ext_resource type="PackedScene" uid="uid://dk5nstd682w7y" path="res://Objects/decks_manager.tscn" id="1_simf3"]
 [ext_resource type="Texture2D" uid="uid://clxui0inx61q1" path="res://icon.svg" id="2_t80xj"]
 [ext_resource type="PackedScene" uid="uid://b8om77egd66nv" path="res://Objects/cursor.tscn" id="3_d6u4x"]
+[ext_resource type="PackedScene" uid="uid://ce04nh6cpfvol" path="res://Scenes/game_scene.tscn" id="4_svupf"]
+
+[sub_resource type="Animation" id="Animation_7vokp"]
+resource_name = "DuelBG"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_t2u7e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hrluy"]
+_data = {
+"DuelBG": SubResource("Animation_7vokp"),
+"RESET": SubResource("Animation_t2u7e")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnj36"]
 size = Vector2(128, 129)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dmkf"]
-size = Vector2(20, 656)
+[sub_resource type="LabelSettings" id="LabelSettings_r7dom"]
+font_size = 40
+outline_size = 20
+outline_color = Color(0, 0, 1, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8krx"]
-size = Vector2(1289, 18)
+[sub_resource type="LabelSettings" id="LabelSettings_5f8xr"]
+font_size = 40
+outline_size = 20
+outline_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7xlvg"]
+font_size = 100
+outline_size = 20
+outline_color = Color(0, 0, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o6ukf"]
+font_size = 100
+outline_size = 20
+outline_color = Color(1, 0, 0, 1)
 
 [node name="Cards_Scene" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(554, 337)
+texture = ExtResource("1_1xfuo")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hrluy")
+}
 
 [node name="Decks Manager" parent="." instance=ExtResource("1_simf3")]
 deckJ1 = [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
 
-[node name="J1Card1" type="Sprite2D" parent="."]
+[node name="0" type="Sprite2D" parent="."]
 position = Vector2(175, 100)
 texture = ExtResource("2_t80xj")
 
-[node name="Area2D" type="Area2D" parent="J1Card1"]
+[node name="Area2D" type="Area2D" parent="0" groups=["P1"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="J1Card1/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="0/Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gnj36")
 
-[node name="J1Card2" type="Sprite2D" parent="."]
+[node name="1" type="Sprite2D" parent="."]
 position = Vector2(375, 100)
 texture = ExtResource("2_t80xj")
 
-[node name="Area2D" type="Area2D" parent="J1Card2"]
+[node name="Area2D" type="Area2D" parent="1" groups=["P1"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="J1Card2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1/Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gnj36")
 
-[node name="J1Card3" type="Sprite2D" parent="."]
+[node name="2" type="Sprite2D" parent="."]
 position = Vector2(575, 100)
 texture = ExtResource("2_t80xj")
 
-[node name="Area2D" type="Area2D" parent="J1Card3"]
+[node name="Area2D" type="Area2D" parent="2" groups=["P1"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="J1Card3/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2/Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gnj36")
 
-[node name="J1Card4" type="Sprite2D" parent="."]
+[node name="3" type="Sprite2D" parent="."]
 position = Vector2(775, 100)
 texture = ExtResource("2_t80xj")
 
-[node name="Area2D" type="Area2D" parent="J1Card4"]
+[node name="Area2D" type="Area2D" parent="3" groups=["P1"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="J1Card4/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="3/Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gnj36")
 
-[node name="J1Card5" type="Sprite2D" parent="."]
+[node name="4" type="Sprite2D" parent="."]
 position = Vector2(975, 100)
 texture = ExtResource("2_t80xj")
 
-[node name="Area2D" type="Area2D" parent="J1Card5"]
+[node name="Area2D" type="Area2D" parent="4" groups=["P1"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="J1Card5/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="4/Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gnj36")
 
-[node name="J2Card1" type="Sprite2D" parent="."]
+[node name="5" type="Sprite2D" parent="."]
 position = Vector2(175, 550)
 texture = ExtResource("2_t80xj")
 
-[node name="Area2D" type="Area2D" parent="J2Card1"]
+[node name="Area2D" type="Area2D" parent="5" groups=["P2"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="J2Card1/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="5/Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gnj36")
 
-[node name="J2Card2" type="Sprite2D" parent="."]
+[node name="6" type="Sprite2D" parent="."]
 position = Vector2(375, 550)
 texture = ExtResource("2_t80xj")
 
-[node name="Area2D" type="Area2D" parent="J2Card2"]
+[node name="Area2D" type="Area2D" parent="6" groups=["P2"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="J2Card2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="6/Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gnj36")
 
-[node name="J2Card3" type="Sprite2D" parent="."]
+[node name="7" type="Sprite2D" parent="."]
 position = Vector2(575, 550)
 texture = ExtResource("2_t80xj")
 
-[node name="Area2D" type="Area2D" parent="J2Card3"]
+[node name="Area2D" type="Area2D" parent="7" groups=["P2"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="J2Card3/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="7/Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gnj36")
 
-[node name="J2Card4" type="Sprite2D" parent="."]
+[node name="8" type="Sprite2D" parent="."]
 position = Vector2(775, 550)
 texture = ExtResource("2_t80xj")
 
-[node name="Area2D" type="Area2D" parent="J2Card4"]
+[node name="Area2D" type="Area2D" parent="8" groups=["P2"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="J2Card4/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="8/Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gnj36")
 
-[node name="J2Card5" type="Sprite2D" parent="."]
+[node name="9" type="Sprite2D" parent="."]
 position = Vector2(975, 550)
 texture = ExtResource("2_t80xj")
 
-[node name="Area2D" type="Area2D" parent="J2Card5"]
+[node name="Area2D" type="Area2D" parent="9" groups=["P2"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="J2Card5/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="9/Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gnj36")
 
@@ -124,25 +188,71 @@ position = Vector2(364, 342)
 [node name="Cursor_J2" parent="." instance=ExtResource("3_d6u4x")]
 position = Vector2(810, 340)
 
-[node name="Limits" type="Area2D" parent="."]
+[node name="UI_Cards" type="CanvasLayer" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits"]
-position = Vector2(-11, 318)
-shape = SubResource("RectangleShape2D_7dmkf")
+[node name="P1_Text" type="Label" parent="UI_Cards"]
+offset_left = 13.0
+offset_top = 11.0
+offset_right = 94.0
+offset_bottom = 65.0
+text = "P1"
+label_settings = SubResource("LabelSettings_r7dom")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Limits"]
-position = Vector2(1163, 318)
-shape = SubResource("RectangleShape2D_7dmkf")
+[node name="P1_Text2" type="Label" parent="UI_Cards"]
+offset_left = 14.0
+offset_top = 400.0
+offset_right = 95.0
+offset_bottom = 455.0
+text = "P2"
+label_settings = SubResource("LabelSettings_5f8xr")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Limits"]
-position = Vector2(571, 656)
-shape = SubResource("RectangleShape2D_u8krx")
+[node name="P1_Ready" type="Label" parent="UI_Cards"]
+visible = false
+offset_left = 176.0
+offset_top = 29.0
+offset_right = 964.0
+offset_bottom = 166.0
+text = "PLAYER 1 READY"
+label_settings = SubResource("LabelSettings_7xlvg")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Limits"]
-position = Vector2(571, -10)
-shape = SubResource("RectangleShape2D_u8krx")
+[node name="Panel" type="Panel" parent="UI_Cards/P1_Ready"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -174.0
+offset_top = -28.0
+offset_right = 190.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[connection signal="area_entered" from="J1Card1/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="J1Card2/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="J1Card3/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="J1Card5/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]
+[node name="P2_Ready" type="Label" parent="UI_Cards"]
+visible = false
+offset_left = 176.0
+offset_top = 428.0
+offset_right = 964.0
+offset_bottom = 565.0
+text = "PLAYER 2 READY"
+label_settings = SubResource("LabelSettings_o6ukf")
+
+[node name="Panel" type="Panel" parent="UI_Cards/P2_Ready"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -174.0
+offset_top = -86.0
+offset_right = 190.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Battle_Scene" parent="." instance=ExtResource("4_svupf")]
+
+[connection signal="area_entered" from="0/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="1/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="2/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="4/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]

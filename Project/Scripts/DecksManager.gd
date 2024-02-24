@@ -3,17 +3,30 @@ extends Node
 @export var deckJ1 = []
 @export var deckJ2 = []
 #sprites de cada una de las cartas
-var spritesCards = ["res://Sprites/fotoperfil.jpg", "res://Sprites/fuckboyycumcum.jpg", "res://Sprites/lol osea o my god en plan holy shit.jpg", "res://Sprites/man.png", "res://Sprites/merengue.jpg"]
+var spritesCards = [
+	"res://Sprites/Cards/Sprite_1.png",
+	"res://Sprites/Cards/Sprite_2.png",
+	"res://Sprites/Cards/Sprite_3.png",
+	"res://Sprites/Cards/Sprite_4.png",
+	"res://Sprites/Cards/Sprite_5.png"
+]
+
 # cartas seleccionadas para combate de los jugadores
 var selectedCardsJ1 = []
 var selectedCardsJ2 = []
 
 @onready var cursorP1 = $"../Cursor_J1"
 @onready var cursorP2 = $"../Cursor_J2"
+@onready var RayP1 = $"../Cursor_J1/RayCast2D"
+@onready var RayP2 = $"../Cursor_J2/RayCast2D"
+@onready var P1_Ready = $"../UI_Cards/P1_Ready"
+@onready var P2_Ready = $"../UI_Cards/P2_Ready"
 
 var P1
 var P2
 
+@onready var Team1_Shader = preload("res://Shaders/Team1.gdshader")
+@onready var Team2_Shader = preload("res://Shaders/Team2.gdshader")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,12 +37,16 @@ func _ready():
 	print(deckJ1)
 	print(deckJ2)
 	var dualshocks = Input.get_connected_joypads()
-	print(dualshocks)
-	if dualshocks.size() == 1:
-		print("One Player")
-		P1 = dualshocks[0]
-	elif dualshocks.size() == 2:
-		print("Two Players")
+	
+	var p1_cursorSprite = cursorP1.get_child(1)
+	p1_cursorSprite.material = ShaderMaterial.new()
+	p1_cursorSprite.material.shader = Team1_Shader
+	
+	var p2_cursorSprite = cursorP2.get_child(1)
+	p2_cursorSprite.material = ShaderMaterial.new()
+	p2_cursorSprite.material.shader = Team2_Shader
+	
+	if dualshocks.size() == 2:
 		P1 = dualshocks[0]
 		P2 = dualshocks[1]
 	_ChangeCardSprite()
@@ -37,33 +54,49 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if selectedCardsJ1.size() == 3:
+		P1_Ready.visible = true
+	
+	if selectedCardsJ2.size() == 3:
+		P2_Ready.visible = true
+	
+	if P1_Ready.visible == true && P2_Ready.visible == true:
+		_HideCards()
+		
+
 # Cambia la textura a cada una de las cartas de los jugadores
 func _ChangeCardSprite():
-	$"../J1Card1".texture = load(spritesCards[deckJ1[0]])
-	$"../J1Card2".texture = load(spritesCards[deckJ1[1]])
-	$"../J1Card3".texture = load(spritesCards[deckJ1[2]])
-	$"../J1Card4".texture = load(spritesCards[deckJ1[3]])
-	$"../J1Card5".texture = load(spritesCards[deckJ1[4]])
-	$"../J2Card1".texture = load(spritesCards[deckJ1[0]])
-	$"../J2Card2".texture = load(spritesCards[deckJ1[1]])
-	$"../J2Card3".texture = load(spritesCards[deckJ1[2]])
-	$"../J2Card4".texture = load(spritesCards[deckJ1[3]])
-	$"../J2Card5".texture = load(spritesCards[deckJ1[4]])
+	$"../0".texture = load(spritesCards[deckJ1[0]])
+	$"../1".texture = load(spritesCards[deckJ1[1]])
+	$"../2".texture = load(spritesCards[deckJ1[2]])
+	$"../3".texture = load(spritesCards[deckJ1[3]])
+	$"../4".texture = load(spritesCards[deckJ1[4]])
+	$"../5".texture = load(spritesCards[deckJ1[0]])
+	$"../6".texture = load(spritesCards[deckJ1[1]])
+	$"../7".texture = load(spritesCards[deckJ1[2]])
+	$"../8".texture = load(spritesCards[deckJ1[3]])
+	$"../9".texture = load(spritesCards[deckJ1[4]])
 
 func _HideCards():
-	$"../J1Card1".visible = false
-	$"../J1Card2".visible = false
-	$"../J1Card3".visible = false
-	$"../J1Card4".visible = false
-	$"../J1Card5".visible = false
-	$"../J2Card1".visible = false
-	$"../J2Card2".visible = false
-	$"../J2Card3".visible = false
-	$"../J2Card4".visible = false
-	$"../J2Card5".visible = false
+	$"../0".visible = false
+	$"../1".visible = false
+	$"../2".visible = false
+	$"../3".visible = false
+	$"../4".visible = false
+	$"../5".visible = false
+	$"../6".visible = false
+	$"../7".visible = false
+	$"../8".visible = false
+	$"../9".visible = false
+	$"../UI_Cards".visible = false
+	cursorP1.visible = false
+	cursorP2.visible = false
+	P1_Ready.visible = false
+	P2_Ready.visible = false
 	
 func _ShowCards():
+	selectedCardsJ1.clear()
+	selectedCardsJ2.clear()
 	$"../J1Card1".visible = true
 	$"../J1Card2".visible = true
 	$"../J1Card3".visible = true
@@ -74,6 +107,11 @@ func _ShowCards():
 	$"../J2Card3".visible = true
 	$"../J2Card4".visible = true
 	$"../J2Card5".visible = true
+	$"../UI_Cards".visible = true
+	cursorP1.visible = true
+	cursorP2.visible = true
+	P1_Ready.visible = true
+	P2_Ready.visible = true
 
 func _input(event):
 	var P1_cursor_move = Vector2(Input.get_joy_axis(P1, JOY_AXIS_LEFT_X), Input.get_joy_axis(P1, JOY_AXIS_LEFT_Y))
@@ -84,14 +122,24 @@ func _input(event):
 	
 	cursorP2.position.x += P2_cursor_move.x * 1.5
 	cursorP2.position.y += P2_cursor_move.y * 1.5
-
-func _clickCard():
 	
-	# if clicado:
-	# get carta onj
-	#guardar en array monstruos jugador to fight
-	# eliminar de array deck jugador
-	#desactivar visibilidad carta clicada
-	pass
-
-
+	if Input.is_joy_button_pressed(P1, JOY_BUTTON_A) && selectedCardsJ1.size() <= 2:
+		if RayP1.get_collider() != null:
+			if RayP1.get_collider().is_in_group("P1"):
+				var selected_card = RayP1.get_collider()
+				if selected_card.get_parent().visible == true:
+					var card_num = String(selected_card.get_parent().name)
+					deckJ1.pop_at(deckJ1.find(int(card_num)))
+					selected_card.get_parent().visible = false
+					selectedCardsJ1.push_back(int(card_num))
+			
+	
+	if Input.is_joy_button_pressed(P2, JOY_BUTTON_A) && selectedCardsJ2.size() <= 2:
+		if RayP2.get_collider() != null:
+			if RayP2.get_collider().is_in_group("P2"):
+				var selected_card = RayP2.get_collider()
+				if selected_card.get_parent().visible == true:
+					var card_num = String(selected_card.get_parent().name)
+					deckJ2.pop_at(deckJ1.find(int(card_num) - 5))
+					selected_card.get_parent().visible = false
+					selectedCardsJ2.push_back(int(card_num) - 5)

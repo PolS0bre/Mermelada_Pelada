@@ -37,13 +37,12 @@ func get_damage(damage):
 	health_points -= damage
 	if health_points <= 0:
 		for enemy in enemies:
-			enemy.enemies.erase($".")
+			enemy.enemies.pop_at(enemy.enemies.find($"."))
 			if enemy.objective == $".":
 				enemy.objective = null
 		
 		for teammates in team_array:
 			teammates.team_array.pop_at(teammates.team_array.find($"."))
-			print(teammates.team_array)
 		
 		if team == true:
 			Duel_Manager.Team1.pop_at(Duel_Manager.Team1.find($"."))
