@@ -6,6 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ah1tv"]
 
 [node name="Enemy_4" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 0
 script = ExtResource("1_pk2ej")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

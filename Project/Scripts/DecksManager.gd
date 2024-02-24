@@ -8,6 +8,13 @@ var spritesCards = ["res://Sprites/fotoperfil.jpg", "res://Sprites/fuckboyycumcu
 var selectedCardsJ1 = []
 var selectedCardsJ2 = []
 
+@onready var cursorP1 = $"../Cursor_J1"
+@onready var cursorP2 = $"../Cursor_J2"
+
+var P1
+var P2
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +23,15 @@ func _ready():
 	deckJ2.shuffle()
 	print(deckJ1)
 	print(deckJ2)
+	var dualshocks = Input.get_connected_joypads()
+	print(dualshocks)
+	if dualshocks.size() == 1:
+		print("One Player")
+		P1 = dualshocks[0]
+	elif dualshocks.size() == 2:
+		print("Two Players")
+		P1 = dualshocks[0]
+		P2 = dualshocks[1]
 	_ChangeCardSprite()
 
 
@@ -60,8 +76,15 @@ func _ShowCards():
 	$"../J2Card5".visible = true
 
 func _input(event):
-	print(event.as_text())
+	var P1_cursor_move = Vector2(Input.get_joy_axis(P1, JOY_AXIS_LEFT_X), Input.get_joy_axis(P1, JOY_AXIS_LEFT_Y))
+	var P2_cursor_move = Vector2(Input.get_joy_axis(P2, JOY_AXIS_LEFT_X), Input.get_joy_axis(P2, JOY_AXIS_LEFT_Y))
 	
+	cursorP1.position.x += P1_cursor_move.x * 1.5
+	cursorP1.position.y += P1_cursor_move.y * 1.5
+	
+	cursorP2.position.x += P2_cursor_move.x * 1.5
+	cursorP2.position.y += P2_cursor_move.y * 1.5
+
 func _clickCard():
 	
 	# if clicado:

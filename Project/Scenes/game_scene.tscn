@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://o2bur58envde" path="res://Objects/duel_manager.tscn" id="6_a66ek"]
 [ext_resource type="PackedScene" uid="uid://cimlxjy7o3b0b" path="res://Objects/Enemies_AIs/enemy_5.tscn" id="6_g72hh"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Battle_Scene" type="Node2D"]
 
 [node name="Enemy_1" parent="." instance=ExtResource("1_4urwm")]
 position = Vector2(132, 115)

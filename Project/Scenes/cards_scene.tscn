@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcjv24njoyjpo"]
+[gd_scene load_steps=7 format=3 uid="uid://bcjv24njoyjpo"]
 
 [ext_resource type="PackedScene" uid="uid://dk5nstd682w7y" path="res://Objects/decks_manager.tscn" id="1_simf3"]
 [ext_resource type="Texture2D" uid="uid://clxui0inx61q1" path="res://icon.svg" id="2_t80xj"]
@@ -7,7 +7,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnj36"]
 size = Vector2(128, 129)
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dmkf"]
+size = Vector2(20, 656)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8krx"]
+size = Vector2(1289, 18)
+
+[node name="Cards_Scene" type="Node2D"]
 
 [node name="Decks Manager" parent="." instance=ExtResource("1_simf3")]
 deckJ1 = [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
@@ -113,8 +119,28 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gnj36")
 
 [node name="Cursor_J1" parent="." instance=ExtResource("3_d6u4x")]
+position = Vector2(364, 342)
 
 [node name="Cursor_J2" parent="." instance=ExtResource("3_d6u4x")]
+position = Vector2(810, 340)
+
+[node name="Limits" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits"]
+position = Vector2(-11, 318)
+shape = SubResource("RectangleShape2D_7dmkf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Limits"]
+position = Vector2(1163, 318)
+shape = SubResource("RectangleShape2D_7dmkf")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Limits"]
+position = Vector2(571, 656)
+shape = SubResource("RectangleShape2D_u8krx")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Limits"]
+position = Vector2(571, -10)
+shape = SubResource("RectangleShape2D_u8krx")
 
 [connection signal="area_entered" from="J1Card1/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="J1Card2/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]
