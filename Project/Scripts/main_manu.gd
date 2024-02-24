@@ -2,6 +2,7 @@ extends Node2D
 
 
 func _ready():
+	$CanvasLayer/MarginContainer/VBoxContainer2.visible = false
 	$CanvasLayer/MarginContainer/VBoxContainer/Button_Play._grabFocus()
 	pass
 
