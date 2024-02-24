@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6x7cuf61nf6y"]
+
+[ext_resource type="Script" path="res://Scripts/AIs/enemy_tank.gd" id="1_hk0pl"]
+[ext_resource type="Texture2D" uid="uid://pgcwwc15w6bt" path="res://Sprites/Enemies/Enemy_Base2.png" id="2_ckdrg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bq0oh"]
+
+[node name="Enemy_1" type="CharacterBody2D" groups=["Enemy"]]
+scale = Vector2(3.5, 3.5)
+script = ExtResource("1_hk0pl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.75)
+shape = SubResource("RectangleShape2D_bq0oh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_ckdrg")

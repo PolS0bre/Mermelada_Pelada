@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://ce04nh6cpfvol"]
+
+[ext_resource type="PackedScene" uid="uid://c6x7cuf61nf6y" path="res://Objects/Enemies_AIs/enemy_1.tscn" id="1_4urwm"]
+[ext_resource type="PackedScene" uid="uid://r6vx2nlatiue" path="res://Objects/Enemies_AIs/enemy_2.tscn" id="2_drj1u"]
+[ext_resource type="PackedScene" uid="uid://b0s40yoku2mp7" path="res://Objects/Enemies_AIs/enemy_3.tscn" id="4_fwtow"]
+[ext_resource type="PackedScene" uid="uid://ivabnrc3qq0f" path="res://Objects/Enemies_AIs/enemy_4.tscn" id="5_hupiw"]
+[ext_resource type="PackedScene" uid="uid://o2bur58envde" path="res://Objects/duel_manager.tscn" id="6_a66ek"]
+[ext_resource type="PackedScene" uid="uid://cimlxjy7o3b0b" path="res://Objects/Enemies_AIs/enemy_5.tscn" id="6_g72hh"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Enemy_1" parent="." instance=ExtResource("1_4urwm")]
+position = Vector2(132, 115)
+team = true
+Name = "Tank 1"
+
+[node name="Enemy_2" parent="." instance=ExtResource("1_4urwm")]
+position = Vector2(249, 492)
+Name = "Tank  2"
+
+[node name="Enemy_3" parent="." instance=ExtResource("1_4urwm")]
+position = Vector2(926, 458)
+Name = "Tank  3"
+
+[node name="Enemy_4" parent="." instance=ExtResource("2_drj1u")]
+position = Vector2(721, 48)
+team = true
+Name = "Speed 1"
+
+[node name="Enemy_5" parent="." instance=ExtResource("4_fwtow")]
+position = Vector2(533, 319)
+Name = "Healer 1"
+
+[node name="Enemy_6" parent="." instance=ExtResource("5_hupiw")]
+position = Vector2(47, 250)
+team = true
+Name = "Mago 1"
+
+[node name="Enemy_7" parent="." instance=ExtResource("6_g72hh")]
+position = Vector2(1069, 290)
+Name = "Brawler 1"
+
+[node name="Duel_Manager" parent="." instance=ExtResource("6_a66ek")]
