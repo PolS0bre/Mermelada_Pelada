@@ -197,6 +197,7 @@ offset_right = 94.0
 offset_bottom = 65.0
 text = "P1"
 label_settings = SubResource("LabelSettings_r7dom")
+metadata/_edit_use_anchors_ = true
 
 [node name="P1_Text2" type="Label" parent="UI_Cards"]
 offset_left = 14.0
@@ -205,6 +206,7 @@ offset_right = 95.0
 offset_bottom = 455.0
 text = "P2"
 label_settings = SubResource("LabelSettings_5f8xr")
+metadata/_edit_use_anchors_ = true
 
 [node name="P1_Ready" type="Label" parent="UI_Cards"]
 visible = false
@@ -251,6 +253,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Battle_Scene" parent="." instance=ExtResource("4_svupf")]
+visible = false
 
 [connection signal="area_entered" from="0/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="1/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]

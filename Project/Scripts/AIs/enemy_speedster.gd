@@ -7,19 +7,6 @@ func _ready():
 	cooldown = 0.75
 	special_cooldown = 15.0
 	speed = 100
-	enemies = get_tree().get_nodes_in_group("Enemy")
-	
-	for enemy in enemies:
-		if enemy.team == team:
-			var index = enemies.find(enemy)
-			team_enemies_pos.push_front(index)
-			team_array.push_back(enemy)
-	
-	for teammates in team_enemies_pos:
-		enemies.remove_at(teammates)
-	
-	team_array.erase($".")
-
 
 func _physics_process(delta):
 	if objective == null:
@@ -55,9 +42,11 @@ func special_attack():
 	objective.get_damage(attack_points * 2)
 	#critico
 	if randi_range(0, 100) > 90:
-		objective.get_damage(10)
+		objective.get_damage(attack_points / 2.0)
 	
-	velocity = position.direction_to(objective.position) * speed
+	if objective != null:
+		velocity = position.direction_to(objective.position) * speed
+	
 	special_cooldown = 15.0
 
 func attack():
@@ -65,5 +54,6 @@ func attack():
 		objective.get_damage(attack_points)
 	#critico
 		if randi_range(0, 100) > 90:
-			objective.get_damage(attack_points / 2.0)
+			if objective != null:
+				objective.get_damage(attack_points / 2.0)
 		cooldown = 1.5

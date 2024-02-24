@@ -38,6 +38,7 @@ func get_damage(damage):
 	if health_points <= 0:
 		for enemy in enemies:
 			enemy.enemies.pop_at(enemy.enemies.find($"."))
+			print(enemy.enemies)
 			if enemy.objective == $".":
 				enemy.objective = null
 		
@@ -50,3 +51,17 @@ func get_damage(damage):
 			Duel_Manager.Team2.pop_at(Duel_Manager.Team2.find($"."))
 		
 		queue_free()
+
+func _difference_teams():
+	enemies = get_tree().get_nodes_in_group("Enemy")
+	
+	for enemy in enemies:
+		if enemy.team == team:
+			var index = enemies.find(enemy)
+			team_enemies_pos.push_front(index)
+			team_array.push_back(enemy)
+	
+	for teammates in team_enemies_pos:
+		enemies.remove_at(teammates)
+	
+	team_array.erase($".")
