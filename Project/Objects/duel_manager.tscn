@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://o2bur58envde"]
+
+[ext_resource type="Script" path="res://Scripts/duel_manager.gd" id="1_b0h4f"]
+
+[node name="Duel_Manager" type="Node2D"]
+script = ExtResource("1_b0h4f")

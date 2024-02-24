@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://ivabnrc3qq0f"]
+[gd_scene load_steps=4 format=3 uid="uid://ivabnrc3qq0f"]
 
-[node name="Enemy_1" type="CharacterBody2D"]
+[ext_resource type="Texture2D" uid="uid://ck67g5sxxydh3" path="res://Sprites/Enemies/Enemy_Base4.png" id="1_4duvf"]
+[ext_resource type="Script" path="res://Scripts/AIs/enemy_mage.gd" id="1_pk2ej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah1tv"]
+
+[node name="Enemy_4" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_pk2ej")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.75)
+shape = SubResource("RectangleShape2D_ah1tv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_4duvf")

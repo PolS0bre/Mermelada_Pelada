@@ -1,31 +1,32 @@
 extends EnemyAI
 
-@export var Name = ""
-var team_array = []
-
 func _ready():
-	health_points = 100
+	health_points = 120
 	attack_points = 10
-	range_att = 75.0
-	cooldown = 0.75
+	range_att = 250.0
+	cooldown = 1.5
 	special_cooldown = 15.0
-	speed = 100
+	speed = 50
 	enemies = get_tree().get_nodes_in_group("Enemy")
 	
 	for enemy in enemies:
 		if enemy.team == team:
 			var index = enemies.find(enemy)
-			team_array.push_front(index)
+			team_enemies_pos.push_front(index)
+			team_array.push_back(enemy)
 	
-	for teammates in team_array:
+	for teammates in team_enemies_pos:
 		enemies.remove_at(teammates)
+	
+	team_array.erase($".")
+	
+
 
 func _physics_process(delta):
 	if objective == null:
 		_find_objective()
 	else:
 		if position.distance_to(objective.position) > range_att:
-			_find_objective()
 			_follow()
 			move_and_slide()
 		else:
@@ -33,7 +34,6 @@ func _physics_process(delta):
 				special_attack()
 			elif cooldown <= 0.0:
 				attack()
-				
 	special_cooldown -= delta
 	cooldown -= delta
 
@@ -51,17 +51,36 @@ func _follow():
 	velocity = position.direction_to(objective.position) * speed
 
 func special_attack():
-	objective.get_damage(attack_points * 3)
-	#critico
-	if randi_range(0, 100) > 90:
-		objective.get_damage(10)
+	if(team_array.size() > 1):
+		print(team_array)
+		for teammates in team_array:
+			teammates.get_damage(-attack_points * 2)
+			print(teammates.health_points)
+	else:
+		health_points = 120
 	
-	velocity = position.direction_to(objective.position) * speed
 	special_cooldown = 15.0
 
 func attack():
-	objective.get_damage(attack_points)
+	if objective != null:
+		objective.get_damage(attack_points)
 	#critico
-	if randi_range(0, 100) > 90:
-		objective.get_damage(5)
-	cooldown = 1.5
+		if randi_range(0, 100) > 90:
+			objective.get_damage(attack_points / 2.0)
+		cooldown = 1.5
+
+
+func get_damage(damage:int):
+	health_points -= damage
+	if health_points <= 0:
+		for enemy in enemies:
+			enemy.enemies.erase($".")
+			if enemy.objective == $".":
+				enemy.objective = null
+		
+		print(team_array)
+		for teammates in team_array:
+			print(teammates.team_array)
+			teammates.team_array.erase(teammates.team_array.find($"."))
+		
+		queue_free()
