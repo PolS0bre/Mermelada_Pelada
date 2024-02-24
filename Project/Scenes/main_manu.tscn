@@ -116,10 +116,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
-alignment = 1
+alignment = 2
 
 [node name="Return" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
@@ -127,6 +126,25 @@ texture_normal = ExtResource("3_vh038")
 texture_hover = ExtResource("4_2ngwm")
 texture_focused = ExtResource("4_2ngwm")
 script = ExtResource("2_nvpyy")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer2/Return"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.5
+offset_top = -24.0
+offset_right = 142.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_rndj8")
+theme_override_font_sizes/font_size = 48
+text = "RETURN"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="UI_LeftTrigger" type="Sprite2D" parent="CanvasLayer/MarginContainer/VBoxContainer2"]
 position = Vector2(-550, -175)
