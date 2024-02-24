@@ -117,4 +117,6 @@ shape = SubResource("RectangleShape2D_gnj36")
 [node name="Cursor_J2" parent="." instance=ExtResource("3_lum0i")]
 
 [connection signal="area_entered" from="J1Card1/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="J1Card2/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="J1Card3/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="J1Card5/Area2D" to="Cursor_J1" method="_on_area_2d_area_entered"]
