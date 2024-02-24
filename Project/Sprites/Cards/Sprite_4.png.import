@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db0k2hkgbu28d"
-path="res://.godot/imported/merengue.jpg-47a620f2f7292d9f6608dcc900548ed7.ctex"
+uid="uid://dcg6ffoy0td3u"
+path="res://.godot/imported/Sprite_4.png-db59aabea69adf7968befde51d53b923.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/merengue.jpg"
-dest_files=["res://.godot/imported/merengue.jpg-47a620f2f7292d9f6608dcc900548ed7.ctex"]
+source_file="res://Sprites/Cards/Sprite_4.png"
+dest_files=["res://.godot/imported/Sprite_4.png-db59aabea69adf7968befde51d53b923.ctex"]
 
 [params]
 
