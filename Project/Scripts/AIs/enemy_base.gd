@@ -21,6 +21,8 @@ var objective
 @onready var SFX_Audio = $"../../SFX"
 var health_bar
 
+var bubble_obj
+
 func _physics_process(delta):
 	pass
 
@@ -57,6 +59,11 @@ func get_damage(damage : float):
 		SFX_Audio.stream = load("res://Audio/SFX/Pop_Bubble_Sound_Effect_2022.mp3")
 		SFX_Audio.play()
 		
+		#bubble_obj
+		var bubble = bubble_obj.instantiate()
+		$"..".add_child(bubble)
+		bubble.position = position
+		
 		queue_free()
 
 func _difference_teams():
@@ -71,3 +78,10 @@ func _difference_teams():
 		enemies.remove_at(teammates)
 	
 	team_array.erase($".")
+
+func check_orientation():
+	if objective != null:
+		if objective.position.x < position.x:
+			$Sprite2D.flip_h = true
+		else:
+			$Sprite2D.flip_h = false

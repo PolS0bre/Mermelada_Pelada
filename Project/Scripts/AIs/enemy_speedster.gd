@@ -9,11 +9,13 @@ func _ready():
 	special_cooldown = 10.0
 	speed = 120
 	health_bar = $ProgressBar
+	bubble_obj = load("res://Objects/death_bubble.tscn")
 
 func _physics_process(delta):
 	if objective == null:
 		$Sprite2D/AnimationPlayer.play("Animations/tiburon_idle")
 		_find_objective()
+		check_orientation()
 	else:
 		if position.distance_to(objective.position) > range_att:
 			_follow()
@@ -50,7 +52,6 @@ func special_attack():
 			objective.get_damage(attack_points / 2.0)
 	
 	if objective != null:
-		print("Ultimate Shark")
 		velocity = position.direction_to(objective.position) * speed * 5
 	
 	special_cooldown = 10.0

@@ -4,12 +4,18 @@ extends Node2D
 func _ready():
 	$CanvasLayer/MarginContainer/VBoxContainer2.visible = false
 	$CanvasLayer/MarginContainer/VBoxContainer2/tutorial_image/Sprite2D.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$CanvasLayer/MarginContainer/VBoxContainer/Button_Play.grab_focus()
-	pass
 
 func _on_button_play_pressed():
 	get_tree().change_scene_to_file("res://Scenes/cards_scene.tscn")
 
+func _process(delta):
+	if Input.is_action_just_pressed("mouse_mode_change"):
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_button_tutorial_pressed():
 	$CanvasLayer/MarginContainer/VBoxContainer.visible = false

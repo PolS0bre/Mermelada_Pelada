@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c01ih4xxsroql"]
+
+[ext_resource type="Script" path="res://Scripts/death_bubble.gd" id="1_ubirb"]
+[ext_resource type="Texture2D" uid="uid://q0ni2ipfmuqe" path="res://Sprites/Bubble.png" id="2_qkeln"]
+
+[node name="Death_Bubble" type="Node2D"]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_ubirb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qkeln")

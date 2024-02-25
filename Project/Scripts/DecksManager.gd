@@ -66,7 +66,14 @@ func show_errorJoys():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("mouse_mode_change"):
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	check_cursor_limits()
+	check_input()
 	
 	if selectedCardsJ1.size() == 3:
 		cursorP1.visible = false
@@ -197,11 +204,12 @@ func _ShowCards():
 	P1_Ready.visible = false
 	P2_Ready.visible = false
 
-func _input(event):
+func check_input():
+	var width_screen = get_viewport().get_visible_rect().size.x
 	if P1 != null:
 		var P1_cursor_move = Vector2(Input.get_joy_axis(P1, JOY_AXIS_LEFT_X), Input.get_joy_axis(P1, JOY_AXIS_LEFT_Y))
-		cursorP1.position.x += P1_cursor_move.x * 1.5
-		cursorP1.position.y += P1_cursor_move.y * 1.5
+		cursorP1.position.x += P1_cursor_move.x * (width_screen / 150)
+		cursorP1.position.y += P1_cursor_move.y * (width_screen / 150)
 		
 		
 		if Input.is_joy_button_pressed(P1, JOY_BUTTON_A) && selectedCardsJ1.size() <= 2:
@@ -217,8 +225,8 @@ func _input(event):
 	
 	if P2 != null:
 		var P2_cursor_move = Vector2(Input.get_joy_axis(P2, JOY_AXIS_LEFT_X), Input.get_joy_axis(P2, JOY_AXIS_LEFT_Y))
-		cursorP2.position.x += P2_cursor_move.x * 1.5
-		cursorP2.position.y += P2_cursor_move.y * 1.5
+		cursorP2.position.x += P2_cursor_move.x * (width_screen / 150)
+		cursorP2.position.y += P2_cursor_move.y * (width_screen / 150)
 		if Input.is_joy_button_pressed(P2, JOY_BUTTON_A) && selectedCardsJ2.size() <= 2:
 			if RayP2.get_collider() != null:
 				if RayP2.get_collider().is_in_group("P2"):

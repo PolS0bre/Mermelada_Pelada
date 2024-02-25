@@ -9,12 +9,14 @@ func _ready():
 	special_cooldown = 10.0
 	speed = 75
 	health_bar = $ProgressBar
+	bubble_obj = load("res://Objects/death_bubble.tscn")
 
 
 func _physics_process(delta):
 	if objective == null:
 		$Sprite2D/AnimationPlayer.play("Animations/anguila_idle")
 		_find_objective()
+		check_orientation()
 	else:
 		if position.distance_to(objective.position) > range_att:
 			_follow()
