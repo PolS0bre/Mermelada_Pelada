@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://ce04nh6cpfvol"]
 
-[ext_resource type="PackedScene" uid="uid://c6x7cuf61nf6y" path="res://Objects/Enemies_AIs/enemy_1.tscn" id="2_21vpe"]
-[ext_resource type="PackedScene" uid="uid://r6vx2nlatiue" path="res://Objects/Enemies_AIs/enemy_2.tscn" id="3_xj1a2"]
-[ext_resource type="PackedScene" uid="uid://b0s40yoku2mp7" path="res://Objects/Enemies_AIs/enemy_3.tscn" id="4_odx8e"]
-[ext_resource type="PackedScene" uid="uid://ivabnrc3qq0f" path="res://Objects/Enemies_AIs/enemy_4.tscn" id="5_jsvo8"]
+[ext_resource type="PackedScene" uid="uid://c6x7cuf61nf6y" path="res://Objects/Enemies_AIs/pulpo.tscn" id="2_a8rao"]
+[ext_resource type="PackedScene" uid="uid://r6vx2nlatiue" path="res://Objects/Enemies_AIs/tiburon.tscn" id="3_m7k6a"]
+[ext_resource type="PackedScene" uid="uid://b0s40yoku2mp7" path="res://Objects/Enemies_AIs/pez_luz.tscn" id="4_mqnud"]
+[ext_resource type="PackedScene" uid="uid://ivabnrc3qq0f" path="res://Objects/Enemies_AIs/anguila.tscn" id="5_uf5ll"]
 [ext_resource type="PackedScene" uid="uid://o2bur58envde" path="res://Objects/duel_manager.tscn" id="6_a66ek"]
-[ext_resource type="PackedScene" uid="uid://cimlxjy7o3b0b" path="res://Objects/Enemies_AIs/enemy_5.tscn" id="6_avnm0"]
+[ext_resource type="PackedScene" uid="uid://cimlxjy7o3b0b" path="res://Objects/Enemies_AIs/manta_raya.tscn" id="6_xkwty"]
 
 [node name="Battle_Scene" type="Node2D"]
 
 [node name="Duel_Manager" parent="." instance=ExtResource("6_a66ek")]
-enemy_types = [ExtResource("2_21vpe"), ExtResource("3_xj1a2"), ExtResource("4_odx8e"), ExtResource("5_jsvo8"), ExtResource("6_avnm0")]
+enemy_types = [ExtResource("2_a8rao"), ExtResource("3_m7k6a"), ExtResource("4_mqnud"), ExtResource("5_uf5ll"), ExtResource("6_xkwty")]

@@ -3,6 +3,7 @@ class_name EnemyAI extends CharacterBody2D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var health_points: int
+var max_hp: int
 var attack_points: int
 var range_att: float
 var cooldown: float
@@ -33,12 +34,11 @@ func attack():
 func special_attack():
 	pass
 
-func get_damage(damage):
+func get_damage(damage : float):
 	health_points -= damage
 	if health_points <= 0:
 		for enemy in enemies:
 			enemy.enemies.pop_at(enemy.enemies.find($"."))
-			print(enemy.enemies)
 			if enemy.objective == $".":
 				enemy.objective = null
 		

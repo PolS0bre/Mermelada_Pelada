@@ -32,7 +32,7 @@ var P2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$"../AnimationPlayer".play("DuelBG")
+	$"../Sprite2D/AnimationPlayer".play("Animations/DuelBG")
 	# desordena las barajas de los jugadores
 	deckJ1.shuffle()
 	randomize()
@@ -63,36 +63,54 @@ func _process(delta):
 	
 	if P1_Ready.visible == true && P2_Ready.visible == true && battle.visible == false:
 		_HideCards()
-		battle.visible = true
 		
-		var first_card_P1 = deckJ1.find(selectedCardsJ1[0])
+		var first_card_P1 = find_first(deckJ1, selectedCardsJ1[0])
 		deckJ1.pop_at(first_card_P1)
-		var second_card_P1 = deckJ1.find(selectedCardsJ1[1])
+		var second_card_P1 = find_first(deckJ1, selectedCardsJ1[1])
 		deckJ1.pop_at(second_card_P1)
-		var third_card_P1 = deckJ1.find(selectedCardsJ1[2])
+		var third_card_P1 = find_first(deckJ1, selectedCardsJ1[2])
 		deckJ1.pop_at(third_card_P1)
 		
-		var first_card_P2 = deckJ2.find(selectedCardsJ1[0])
-		deckJ1.pop_at(first_card_P2)
-		var second_card_P2 = deckJ2.find(selectedCardsJ1[1])
-		deckJ1.pop_at(second_card_P2)
-		var third_card_P2 = deckJ2.find(selectedCardsJ1[2])
-		deckJ1.pop_at(third_card_P2)
+		var first_card_P2 = find_first(deckJ2, selectedCardsJ2[0])
+		deckJ2.pop_at(first_card_P2)
+		var second_card_P2 = find_first(deckJ2, selectedCardsJ2[1])
+		deckJ2.pop_at(second_card_P2)
+		var third_card_P2 = find_first(deckJ2, selectedCardsJ2[2])
+		deckJ2.pop_at(third_card_P2)
 		
+		battle.visible = true
 		battle.get_child(0).start_duel()
+
+func find_first(Deck : Array, number_to_find : int):
+	for element in Deck:
+		if element == number_to_find:
+			var position = Deck.find(element)
+			return position
+			break
+		
+	
 
 # Cambia la textura a cada una de las cartas de los jugadores
 func _ChangeCardSprite():
 	$"../0".texture = load(spritesCards[deckJ1[0]])
 	$"../1".texture = load(spritesCards[deckJ1[1]])
 	$"../2".texture = load(spritesCards[deckJ1[2]])
-	$"../3".texture = load(spritesCards[deckJ1[3]])
-	$"../4".texture = load(spritesCards[deckJ1[4]])
+	if deckJ1.size() > 3:
+		$"../3".texture = load(spritesCards[deckJ1[3]])
+		$"../4".texture = load(spritesCards[deckJ1[4]])
+	else:
+		$"../3".texture = "res://icon.svg"
+		$"../4".texture = "res://icon.svg"
+	
 	$"../5".texture = load(spritesCards[deckJ2[0]])
 	$"../6".texture = load(spritesCards[deckJ2[1]])
 	$"../7".texture = load(spritesCards[deckJ2[2]])
-	$"../8".texture = load(spritesCards[deckJ2[3]])
-	$"../9".texture = load(spritesCards[deckJ2[4]])
+	if deckJ2.size() > 3:
+		$"../8".texture = load(spritesCards[deckJ2[3]])
+		$"../9".texture = load(spritesCards[deckJ2[4]])
+	else:
+		$"../8".texture = "res://icon.svg"
+		$"../9".texture = "res://icon.svg"
 
 func _HideCards():
 	$"../0".visible = false
@@ -115,8 +133,6 @@ func _ShowCards():
 	battle.visible = false
 	selectedCardsJ1.clear()
 	selectedCardsJ2.clear()
-	print(selectedCardsJ1)
-	print(selectedCardsJ2)
 	$"../0".visible = true
 	$"../1".visible = true
 	$"../2".visible = true
@@ -134,14 +150,15 @@ func _ShowCards():
 	P2_Ready.visible = false
 
 func _input(event):
-	var P1_cursor_move = Vector2(Input.get_joy_axis(P1, JOY_AXIS_LEFT_X), Input.get_joy_axis(P1, JOY_AXIS_LEFT_Y))
-	var P2_cursor_move = Vector2(Input.get_joy_axis(P2, JOY_AXIS_LEFT_X), Input.get_joy_axis(P2, JOY_AXIS_LEFT_Y))
+	if P1 != null:
+		var P1_cursor_move = Vector2(Input.get_joy_axis(P1, JOY_AXIS_LEFT_X), Input.get_joy_axis(P1, JOY_AXIS_LEFT_Y))
+		cursorP1.position.x += P1_cursor_move.x * 1.5
+		cursorP1.position.y += P1_cursor_move.y * 1.5
 	
-	cursorP1.position.x += P1_cursor_move.x * 1.5
-	cursorP1.position.y += P1_cursor_move.y * 1.5
-	
-	cursorP2.position.x += P2_cursor_move.x * 1.5
-	cursorP2.position.y += P2_cursor_move.y * 1.5
+	if P2 != null:
+		var P2_cursor_move = Vector2(Input.get_joy_axis(P2, JOY_AXIS_LEFT_X), Input.get_joy_axis(P2, JOY_AXIS_LEFT_Y))
+		cursorP2.position.x += P2_cursor_move.x * 1.5
+		cursorP2.position.y += P2_cursor_move.y * 1.5
 	
 	if Input.is_joy_button_pressed(P1, JOY_BUTTON_A) && selectedCardsJ1.size() <= 2:
 		if RayP1.get_collider() != null:
@@ -149,10 +166,8 @@ func _input(event):
 				var selected_card = RayP1.get_collider()
 				if selected_card.get_parent().visible == true:
 					var card_num = String(selected_card.get_parent().name)
-					deckJ1.pop_at(deckJ1.find(int(card_num)))
 					selected_card.get_parent().visible = false
-					selectedCardsJ1.push_back(int(card_num))
-			
+					selectedCardsJ1.push_back(deckJ1[int(card_num)])
 	
 	if Input.is_joy_button_pressed(P2, JOY_BUTTON_A) && selectedCardsJ2.size() <= 2:
 		if RayP2.get_collider() != null:
@@ -160,6 +175,5 @@ func _input(event):
 				var selected_card = RayP2.get_collider()
 				if selected_card.get_parent().visible == true:
 					var card_num = String(selected_card.get_parent().name)
-					deckJ2.pop_at(deckJ1.find(int(card_num) - 5))
 					selected_card.get_parent().visible = false
-					selectedCardsJ2.push_back(int(card_num) - 5)
+					selectedCardsJ2.push_back(deckJ2[int(card_num) - 5])

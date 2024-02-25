@@ -2,6 +2,7 @@ extends EnemyAI
 
 func _ready():
 	health_points = 150
+	max_hp = 150
 	attack_points = 18
 	range_att = 75.0
 	cooldown = 1.25
@@ -10,6 +11,7 @@ func _ready():
 
 func _physics_process(delta):
 	if objective == null:
+		$Sprite2D/AnimationPlayer.play("Animations/raya_idle")
 		_find_objective()
 	else:
 		if position.distance_to(objective.position) > range_att:
@@ -17,8 +19,10 @@ func _physics_process(delta):
 			move_and_slide()
 		else:
 			if special_cooldown <= 0.0:
+				$Sprite2D/AnimationPlayer.play("Animations/raya_att")
 				special_attack()
 			elif cooldown <= 0.0:
+				$Sprite2D/AnimationPlayer.play("Animations/raya_att")
 				attack()
 	special_cooldown -= delta
 	cooldown -= delta

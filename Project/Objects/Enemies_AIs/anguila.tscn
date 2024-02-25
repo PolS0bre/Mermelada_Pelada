@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=3 uid="uid://ivabnrc3qq0f"]
+
+[ext_resource type="Script" path="res://Scripts/AIs/enemy_mage.gd" id="1_unftf"]
+[ext_resource type="Texture2D" uid="uid://c4rq08q7fbm4s" path="res://Sprites/Enemies/Anguila/Anguila_Idle.png" id="2_1opxs"]
+[ext_resource type="Texture2D" uid="uid://cxev6o3fahwpa" path="res://Sprites/Enemies/Pez Luz/PezLuz_Idle.png" id="2_58o4y"]
+[ext_resource type="AnimationLibrary" uid="uid://ccsc2drn1i6oo" path="res://Animations/Animations.res" id="3_7yxoh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah1tv"]
+size = Vector2(88, 23.3333)
+
+[sub_resource type="Animation" id="Animation_8o431"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_58o4y")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_1opxs")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_310ll"]
+_data = {
+"RESET": SubResource("Animation_8o431")
+}
+
+[node name="Anguila" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 0
+script = ExtResource("1_unftf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -1.25)
+scale = Vector2(0.5, 0.75)
+shape = SubResource("RectangleShape2D_ah1tv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 2.38419e-06)
+scale = Vector2(0.635659, 0.491228)
+texture = ExtResource("2_1opxs")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_310ll"),
+"Animations": ExtResource("3_7yxoh")
+}

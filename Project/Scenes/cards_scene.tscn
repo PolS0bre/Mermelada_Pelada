@@ -2,46 +2,53 @@
 
 [ext_resource type="Texture2D" uid="uid://diuinhfa5fpm0" path="res://Sprites/ArenaMarina-Sheet.png" id="1_1xfuo"]
 [ext_resource type="PackedScene" uid="uid://dk5nstd682w7y" path="res://Objects/decks_manager.tscn" id="1_simf3"]
+[ext_resource type="AnimationLibrary" uid="uid://ccsc2drn1i6oo" path="res://Animations/Animations.res" id="2_cgmra"]
 [ext_resource type="Texture2D" uid="uid://clxui0inx61q1" path="res://icon.svg" id="2_t80xj"]
 [ext_resource type="PackedScene" uid="uid://b8om77egd66nv" path="res://Objects/cursor.tscn" id="3_d6u4x"]
 [ext_resource type="PackedScene" uid="uid://ce04nh6cpfvol" path="res://Scenes/game_scene.tscn" id="4_svupf"]
 
-[sub_resource type="Animation" id="Animation_7vokp"]
-resource_name = "DuelBG"
-length = 1.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_t2u7e"]
+[sub_resource type="Animation" id="Animation_umcy4"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath(".:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_1xfuo")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
 "values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hrluy"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_atwof"]
 _data = {
-"DuelBG": SubResource("Animation_7vokp"),
-"RESET": SubResource("Animation_t2u7e")
+"RESET": SubResource("Animation_umcy4")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnj36"]
@@ -74,9 +81,10 @@ position = Vector2(554, 337)
 texture = ExtResource("1_1xfuo")
 hframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_hrluy")
+"": SubResource("AnimationLibrary_atwof"),
+"Animations": ExtResource("2_cgmra")
 }
 
 [node name="Decks Manager" parent="." instance=ExtResource("1_simf3")]

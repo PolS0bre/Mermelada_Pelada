@@ -1,0 +1,126 @@
+[gd_scene load_steps=7 format=3 uid="uid://bi5kyf1smfd1c"]
+
+[ext_resource type="Script" path="res://Scripts/EndGame.gd" id="1_6xeqh"]
+[ext_resource type="Texture2D" uid="uid://dyic7nnx6ku86" path="res://Sprites/Menu/FondoMarino.png" id="2_k6m4g"]
+[ext_resource type="Texture2D" uid="uid://drdha8o8pvimk" path="res://Sprites/Menu/btnNormal.png" id="3_d0ski"]
+[ext_resource type="Texture2D" uid="uid://btvvfcc0yfk4m" path="res://Sprites/Menu/btnHover.png" id="4_qeiq2"]
+[ext_resource type="FontFile" uid="uid://d4j1by40lamgr" path="res://Fonts/PixelifySans-Regular.ttf" id="5_p63l6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1nyes"]
+font = ExtResource("5_p63l6")
+font_size = 740
+outline_size = 100
+outline_color = Color(0, 0, 1, 0.403922)
+
+[node name="EndGame" type="Node2D"]
+script = ExtResource("1_6xeqh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(578, 314)
+scale = Vector2(0.768965, 0.768965)
+texture = ExtResource("2_k6m4g")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = 226.0
+offset_right = 214.0
+offset_bottom = 304.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.66, 0.66)
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="Button_ReturnMainMenu" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_d0ski")
+texture_hover = ExtResource("4_qeiq2")
+texture_focused = ExtResource("4_qeiq2")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/Button_ReturnMainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.5
+offset_top = -24.0
+offset_right = 142.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_p63l6")
+theme_override_font_sizes/font_size = 48
+text = "MAIN MENU"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button_Exit" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_d0ski")
+texture_hover = ExtResource("4_qeiq2")
+texture_focused = ExtResource("4_qeiq2")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/Button_Exit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.5
+offset_top = -24.0
+offset_right = 142.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_p63l6")
+theme_override_font_sizes/font_size = 48
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -124.0
+offset_right = 1.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MarginContainer2"]
+position = Vector2(109, 0)
+texture = ExtResource("3_d0ski")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer2/Sprite2D"]
+offset_left = -143.0
+offset_top = -26.0
+offset_right = 5627.0
+offset_bottom = 1024.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_outline_color = Color(0, 0, 1, 1)
+theme_override_fonts/font = ExtResource("5_p63l6")
+theme_override_font_sizes/font_size = 42
+text = "PLAYER 1 WINS"
+label_settings = SubResource("LabelSettings_1nyes")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Button_ReturnMainMenu" to="." method="_on_button_return_main_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Button_Exit" to="." method="_on_button_exit_pressed"]

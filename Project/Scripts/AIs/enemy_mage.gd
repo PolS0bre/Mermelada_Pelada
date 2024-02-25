@@ -2,15 +2,17 @@ extends EnemyAI
 
 func _ready():
 	health_points = 120
-	attack_points = 10
+	max_hp = 120
+	attack_points = 12
 	range_att = 200.0
 	cooldown = 1.5
 	special_cooldown = 15.0
-	speed = 50
+	speed = 75
 
 
 func _physics_process(delta):
 	if objective == null:
+		$Sprite2D/AnimationPlayer.play("Animations/anguila_idle")
 		_find_objective()
 	else:
 		if position.distance_to(objective.position) > range_att:
@@ -18,8 +20,11 @@ func _physics_process(delta):
 			move_and_slide()
 		else:
 			if special_cooldown <= 0.0:
+				$Sprite2D/AnimationPlayer.play("Animations/anguila_att")
+				#spawn particulas OMG 
 				special_attack()
 			elif cooldown <= 0.0:
+				$Sprite2D/AnimationPlayer.play("Animations/anguila_att")
 				attack()
 	special_cooldown -= delta
 	cooldown -= delta

@@ -1,20 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://bi5kyf1smfd1c"]
+[gd_scene load_steps=7 format=3 uid="uid://b6107pjpqcma3"]
 
-[ext_resource type="Script" path="res://Scripts/EndGame.gd" id="1_er76e"]
-[ext_resource type="Texture2D" uid="uid://dyic7nnx6ku86" path="res://Sprites/Menu/FondoMarino.png" id="1_qsaqj"]
-[ext_resource type="Texture2D" uid="uid://drdha8o8pvimk" path="res://Sprites/Menu/btnNormal.png" id="2_on7y4"]
-[ext_resource type="Texture2D" uid="uid://btvvfcc0yfk4m" path="res://Sprites/Menu/btnHover.png" id="3_qipgu"]
-[ext_resource type="FontFile" uid="uid://d4j1by40lamgr" path="res://Fonts/PixelifySans-Regular.ttf" id="5_chjox"]
+[ext_resource type="Script" path="res://Scripts/EndGame.gd" id="1_b3ktk"]
+[ext_resource type="Texture2D" uid="uid://dyic7nnx6ku86" path="res://Sprites/Menu/FondoMarino.png" id="2_xkdry"]
+[ext_resource type="Texture2D" uid="uid://drdha8o8pvimk" path="res://Sprites/Menu/btnNormal.png" id="3_7p6cs"]
+[ext_resource type="Texture2D" uid="uid://btvvfcc0yfk4m" path="res://Sprites/Menu/btnHover.png" id="4_lf3mu"]
+[ext_resource type="FontFile" uid="uid://d4j1by40lamgr" path="res://Fonts/PixelifySans-Regular.ttf" id="5_rufrn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_77nt7"]
+font = ExtResource("5_rufrn")
+font_size = 740
+outline_size = 100
+outline_color = Color(1, 0, 0, 0.54902)
 
 [node name="EndGame" type="Node2D"]
-script = ExtResource("1_er76e")
+script = ExtResource("1_b3ktk")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(578, 314)
 scale = Vector2(0.768965, 0.768965)
-texture = ExtResource("1_qsaqj")
+texture = ExtResource("2_xkdry")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -36,9 +42,9 @@ layout_mode = 2
 
 [node name="Button_ReturnMainMenu" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_on7y4")
-texture_hover = ExtResource("3_qipgu")
-texture_focused = ExtResource("3_qipgu")
+texture_normal = ExtResource("3_7p6cs")
+texture_hover = ExtResource("4_lf3mu")
+texture_focused = ExtResource("4_lf3mu")
 
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/Button_ReturnMainMenu"]
 layout_mode = 1
@@ -53,7 +59,7 @@ offset_right = 142.5
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("5_chjox")
+theme_override_fonts/font = ExtResource("5_rufrn")
 theme_override_font_sizes/font_size = 48
 text = "MAIN MENU"
 horizontal_alignment = 1
@@ -61,9 +67,9 @@ vertical_alignment = 1
 
 [node name="Button_Exit" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_on7y4")
-texture_hover = ExtResource("3_qipgu")
-texture_focused = ExtResource("3_qipgu")
+texture_normal = ExtResource("3_7p6cs")
+texture_hover = ExtResource("4_lf3mu")
+texture_focused = ExtResource("4_lf3mu")
 
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/Button_Exit"]
 layout_mode = 1
@@ -78,7 +84,7 @@ offset_right = 142.5
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("5_chjox")
+theme_override_fonts/font = ExtResource("5_rufrn")
 theme_override_font_sizes/font_size = 48
 text = "EXIT"
 horizontal_alignment = 1
@@ -100,16 +106,19 @@ scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MarginContainer2"]
 position = Vector2(109, 0)
-texture = ExtResource("2_on7y4")
+texture = ExtResource("3_7p6cs")
 
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainer2/Sprite2D"]
 offset_left = -143.0
-offset_top = -30.0
-offset_right = 142.0
-offset_bottom = 29.0
-theme_override_fonts/font = ExtResource("5_chjox")
-theme_override_font_sizes/font_size = 52
-text = "GAME OVER"
+offset_top = -26.0
+offset_right = 5627.0
+offset_bottom = 1024.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_outline_color = Color(0, 0, 1, 1)
+theme_override_fonts/font = ExtResource("5_rufrn")
+theme_override_font_sizes/font_size = 42
+text = "PLAYER 2 WINS"
+label_settings = SubResource("LabelSettings_77nt7")
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -2,24 +2,27 @@ extends EnemyAI
 
 func _ready():
 	health_points = 100
+	max_hp = 100
 	attack_points = 10
 	range_att = 75.0
 	cooldown = 0.75
 	special_cooldown = 15.0
-	speed = 100
+	speed = 120
 
 func _physics_process(delta):
 	if objective == null:
+		$Sprite2D/AnimationPlayer.play("Animations/tiburon_idle")
 		_find_objective()
 	else:
 		if position.distance_to(objective.position) > range_att:
-			_find_objective()
 			_follow()
 			move_and_slide()
 		else:
 			if special_cooldown <= 0.0:
+				$Sprite2D/AnimationPlayer.play("Animations/tiburon_att")
 				special_attack()
 			elif cooldown <= 0.0:
+				$Sprite2D/AnimationPlayer.play("Animations/tiburon_att")
 				attack()
 				
 	special_cooldown -= delta

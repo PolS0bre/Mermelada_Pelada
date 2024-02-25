@@ -2,6 +2,7 @@ extends EnemyAI
 
 func _ready():
 	health_points = 120
+	max_hp = 120
 	attack_points = 10
 	range_att = 250.0
 	cooldown = 1.5
@@ -10,6 +11,7 @@ func _ready():
 
 func _physics_process(delta):
 	if objective == null:
+		$Sprite2D/AnimationPlayer.play("Animations/luz_idle")
 		_find_objective()
 	else:
 		if position.distance_to(objective.position) > range_att:
@@ -17,8 +19,10 @@ func _physics_process(delta):
 			move_and_slide()
 		else:
 			if special_cooldown <= 0.0:
+				$Sprite2D/AnimationPlayer.play("Animations/luz_att")
 				special_attack()
 			elif cooldown <= 0.0:
+				$Sprite2D/AnimationPlayer.play("Animations/luz_att")
 				attack()
 	special_cooldown -= delta
 	cooldown -= delta
@@ -37,7 +41,6 @@ func _follow():
 	velocity = position.direction_to(objective.position) * speed
 
 func special_attack():
-	print(team_array.size())
 	if(team_array.size() > 1):
 		for teammates in team_array:
 			teammates.get_damage(-attack_points * 2)

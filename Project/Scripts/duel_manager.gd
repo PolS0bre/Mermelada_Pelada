@@ -20,8 +20,7 @@ var positions_used = []
 
 
 func start_duel():
-	print(positions_base)
-	positions_used = positions_base
+	positions_used = positions_base.duplicate(true)
 	for p1_monster in CardMode_Manager.selectedCardsJ1:
 		var mob = enemy_types[p1_monster].instantiate()
 		
@@ -68,23 +67,6 @@ func start_duel():
 func _process(delta):
 	if in_battle:
 		if Team1.size() == 0:
-			print("Team 2 WINS")
-		
-			var resta_peces = get_tree().get_nodes_in_group("Enemy")
-			for pez in resta_peces:
-				pez.queue_free()
-		
-			Team1.clear()
-			Team2.clear()
-			
-			score_P1 += 1
-			
-			CardMode_Manager._ChangeCardSprite()
-			CardMode_Manager._ShowCards()
-			in_battle = false
-		
-		elif Team2.size() == 0:
-			print("Team 1 WINS")
 		
 			var resta_peces = get_tree().get_nodes_in_group("Enemy")
 			for pez in resta_peces:
@@ -95,7 +77,30 @@ func _process(delta):
 			
 			score_P2 += 1
 			
-			CardMode_Manager._ChangeCardSprite()
-			CardMode_Manager._ShowCards()
+			if score_P2 < 3:
+				CardMode_Manager._ChangeCardSprite()
+				CardMode_Manager._ShowCards()
+				in_battle = false
+			else:
+				get_tree().change_scene_to_file("res://Scenes/P2Wins.tscn")
+				
+		
+		elif Team2.size() == 0:
+		
+			var resta_peces = get_tree().get_nodes_in_group("Enemy")
+			for pez in resta_peces:
+				pez.queue_free()
+		
+			Team1.clear()
+			Team2.clear()
 			
-			in_battle = false
+			score_P1 += 1
+			
+			
+			if score_P1 < 3:
+				CardMode_Manager._ChangeCardSprite()
+				CardMode_Manager._ShowCards()
+				in_battle = false
+			else:
+				get_tree().change_scene_to_file("res://Scenes/P1Wins.tscn")
+				

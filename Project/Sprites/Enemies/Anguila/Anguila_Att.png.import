@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pgcwwc15w6bt"
-path="res://.godot/imported/Enemy_Base2.png-2885be3db65a8e68a72632355836ca33.ctex"
+uid="uid://dtxwv7o22tsmp"
+path="res://.godot/imported/Anguila_Att.png-59c45a0d84fe92555d955ad5a1d0861b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Enemies/Enemy_Base2.png"
-dest_files=["res://.godot/imported/Enemy_Base2.png-2885be3db65a8e68a72632355836ca33.ctex"]
+source_file="res://Sprites/Enemies/Anguila/Anguila_Att.png"
+dest_files=["res://.godot/imported/Anguila_Att.png-59c45a0d84fe92555d955ad5a1d0861b.ctex"]
 
 [params]
 
