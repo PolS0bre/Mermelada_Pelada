@@ -18,6 +18,7 @@ var team_array = []
 var team_enemies_pos = []
 var objective
 
+@onready var SFX_Audio = $"../../SFX"
 
 func _physics_process(delta):
 	pass
@@ -49,6 +50,10 @@ func get_damage(damage : float):
 			Duel_Manager.Team1.pop_at(Duel_Manager.Team1.find($"."))
 		else:
 			Duel_Manager.Team2.pop_at(Duel_Manager.Team2.find($"."))
+		
+		
+		SFX_Audio.stream = load("res://Audio/SFX/Pop_Bubble_Sound_Effect_2022.mp3")
+		SFX_Audio.play()
 		
 		queue_free()
 

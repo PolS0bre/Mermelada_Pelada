@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bi5kyf1smfd1c"]
+[gd_scene load_steps=8 format=3 uid="uid://bi5kyf1smfd1c"]
 
 [ext_resource type="Script" path="res://Scripts/EndGame.gd" id="1_6xeqh"]
 [ext_resource type="Texture2D" uid="uid://dyic7nnx6ku86" path="res://Sprites/Menu/FondoMarino.png" id="2_k6m4g"]
 [ext_resource type="Texture2D" uid="uid://drdha8o8pvimk" path="res://Sprites/Menu/btnNormal.png" id="3_d0ski"]
 [ext_resource type="Texture2D" uid="uid://btvvfcc0yfk4m" path="res://Sprites/Menu/btnHover.png" id="4_qeiq2"]
 [ext_resource type="FontFile" uid="uid://d4j1by40lamgr" path="res://Fonts/PixelifySans-Regular.ttf" id="5_p63l6"]
+[ext_resource type="PackedScene" uid="uid://cjqsbxlaprprq" path="res://Objects/Audio/main_menu_music.tscn" id="6_ins45"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1nyes"]
 font = ExtResource("5_p63l6")
@@ -121,6 +122,8 @@ text = "PLAYER 1 WINS"
 label_settings = SubResource("LabelSettings_1nyes")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MM_Player" parent="." instance=ExtResource("6_ins45")]
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Button_ReturnMainMenu" to="." method="_on_button_return_main_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Button_Exit" to="." method="_on_button_exit_pressed"]

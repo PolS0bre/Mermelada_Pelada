@@ -17,9 +17,12 @@ var positions_used = []
 @onready var Team2_Shader = preload("res://Shaders/Team2.gdshader")
 
 @onready var CardMode_Manager = $"../../Decks Manager"
+@onready var UI_Duel = $"../UI"
 
+@onready var SFX_Audio = $"../../SFX"
 
 func start_duel():
+	UI_Duel.visible = true
 	positions_used = positions_base.duplicate(true)
 	for p1_monster in CardMode_Manager.selectedCardsJ1:
 		var mob = enemy_types[p1_monster].instantiate()
@@ -77,10 +80,21 @@ func _process(delta):
 			
 			score_P2 += 1
 			
+			UI_Duel.get_child(1).text = str(score_P1)
+			UI_Duel.get_child(2).text = str(score_P2)
+			UI_Duel.get_child(3).text = "ROUND WINNER: PLAYER 2"
+			UI_Duel.get_child(3).label_settings = load("res://Labels/team2_label.tres")
+			UI_Duel.get_child(3).visible = true
+			in_battle = false
+			
 			if score_P2 < 3:
+				SFX_Audio.stream = load("res://Audio/SFX/next_round.mp3")
+				SFX_Audio.play()
+				await get_tree().create_timer(2.5).timeout
+				UI_Duel.get_child(3).visible = false
+				UI_Duel.visible = false
 				CardMode_Manager._ChangeCardSprite()
 				CardMode_Manager._ShowCards()
-				in_battle = false
 			else:
 				get_tree().change_scene_to_file("res://Scenes/P2Wins.tscn")
 				
@@ -96,11 +110,21 @@ func _process(delta):
 			
 			score_P1 += 1
 			
+			UI_Duel.get_child(1).text = str(score_P1)
+			UI_Duel.get_child(2).text = str(score_P2)
+			UI_Duel.get_child(3).text = "ROUND WINNER: PLAYER 1"
+			UI_Duel.get_child(3).label_settings = load("res://Labels/team1_label.tres")
+			UI_Duel.get_child(3).visible = true
+			in_battle = false
 			
 			if score_P1 < 3:
+				SFX_Audio.stream = load("res://Audio/SFX/next_round.mp3")
+				SFX_Audio.play()
+				await get_tree().create_timer(2.5).timeout
+				UI_Duel.get_child(3).visible = false
+				UI_Duel.visible = false
 				CardMode_Manager._ChangeCardSprite()
 				CardMode_Manager._ShowCards()
-				in_battle = false
 			else:
 				get_tree().change_scene_to_file("res://Scenes/P1Wins.tscn")
 				

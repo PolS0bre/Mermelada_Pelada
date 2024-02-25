@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ce04nh6cpfvol"]
+[gd_scene load_steps=12 format=3 uid="uid://ce04nh6cpfvol"]
 
 [ext_resource type="PackedScene" uid="uid://c6x7cuf61nf6y" path="res://Objects/Enemies_AIs/pulpo.tscn" id="2_a8rao"]
 [ext_resource type="PackedScene" uid="uid://r6vx2nlatiue" path="res://Objects/Enemies_AIs/tiburon.tscn" id="3_m7k6a"]
@@ -6,8 +6,81 @@
 [ext_resource type="PackedScene" uid="uid://ivabnrc3qq0f" path="res://Objects/Enemies_AIs/anguila.tscn" id="5_uf5ll"]
 [ext_resource type="PackedScene" uid="uid://o2bur58envde" path="res://Objects/duel_manager.tscn" id="6_a66ek"]
 [ext_resource type="PackedScene" uid="uid://cimlxjy7o3b0b" path="res://Objects/Enemies_AIs/manta_raya.tscn" id="6_xkwty"]
+[ext_resource type="Texture2D" uid="uid://btsoqfuh7f53u" path="res://Sprites/Marcador.png" id="7_dkm2g"]
+[ext_resource type="FontFile" uid="uid://d4j1by40lamgr" path="res://Fonts/PixelifySans-Regular.ttf" id="8_23kmg"]
+[ext_resource type="LabelSettings" uid="uid://cu37pu8bsnw2q" path="res://Labels/team2_label.tres" id="9_v3jv0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y0s6l"]
+font = ExtResource("8_23kmg")
+font_size = 100
+outline_size = 20
+outline_color = Color(0, 0, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ifiib"]
+font = ExtResource("8_23kmg")
+font_size = 100
+outline_size = 20
+outline_color = Color(1, 0, 0, 1)
 
 [node name="Battle_Scene" type="Node2D"]
 
 [node name="Duel_Manager" parent="." instance=ExtResource("6_a66ek")]
 enemy_types = [ExtResource("2_a8rao"), ExtResource("3_m7k6a"), ExtResource("4_mqnud"), ExtResource("5_uf5ll"), ExtResource("6_xkwty")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -401.0
+offset_right = 499.0
+offset_bottom = 300.0
+grow_horizontal = 2
+scale = Vector2(0.930892, 0.924654)
+texture = ExtResource("7_dkm2g")
+
+[node name="P1_Score" type="Label" parent="UI"]
+anchors_preset = -1
+anchor_left = 0.325521
+anchor_top = 0.0385802
+anchor_right = 0.404514
+anchor_bottom = 0.233025
+offset_left = 49.0
+offset_right = 49.0
+text = "0"
+label_settings = SubResource("LabelSettings_y0s6l")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="P2_Score" type="Label" parent="UI"]
+anchors_preset = -1
+anchor_left = 0.52691
+anchor_top = 0.0416667
+anchor_right = 0.611111
+anchor_bottom = 0.229938
+offset_left = 49.0
+offset_right = 49.0
+text = "0"
+label_settings = SubResource("LabelSettings_ifiib")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Round_Winner" type="Label" parent="UI"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.142361
+anchor_top = 0.350309
+anchor_right = 0.863715
+anchor_bottom = 0.739198
+offset_top = -1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+text = "ROUND WINNER: PLAYER 2"
+label_settings = ExtResource("9_v3jv0")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

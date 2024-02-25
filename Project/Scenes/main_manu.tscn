@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4k2vq6vct2p8"]
+[gd_scene load_steps=14 format=3 uid="uid://d4k2vq6vct2p8"]
 
 [ext_resource type="Script" path="res://Scripts/main_manu.gd" id="1_7jptb"]
 [ext_resource type="Texture2D" uid="uid://dyic7nnx6ku86" path="res://Sprites/Menu/FondoMarino.png" id="2_cggrj"]
@@ -9,6 +9,21 @@
 [ext_resource type="Script" path="res://Scripts/tutorial_image.gd" id="4_3fh4a"]
 [ext_resource type="FontFile" uid="uid://d4j1by40lamgr" path="res://Fonts/PixelifySans-Regular.ttf" id="6_rndj8"]
 [ext_resource type="Texture2D" uid="uid://clxui0inx61q1" path="res://icon.svg" id="8_6jtlg"]
+[ext_resource type="FontFile" uid="uid://bkjp1f6o8ljdm" path="res://Fonts/LIBRIT__.ttf" id="10_fgo0a"]
+[ext_resource type="PackedScene" uid="uid://cjqsbxlaprprq" path="res://Objects/Audio/main_menu_music.tscn" id="11_pr3x2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gja7f"]
+font = ExtResource("10_fgo0a")
+font_size = 216
+font_color = Color(0.0705882, 1, 1, 1)
+outline_size = 20
+outline_color = Color(0.0313726, 0, 0.670588, 0.490196)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ki271"]
+font = ExtResource("10_fgo0a")
+font_size = 76
+outline_size = 10
+outline_color = Color(0, 0.45098, 0.45098, 1)
 
 [node name="MainManu" type="Node2D"]
 position = Vector2(-1, 0)
@@ -166,6 +181,36 @@ script = ExtResource("4_3fh4a")
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MarginContainer/VBoxContainer2/tutorial_image"]
 position = Vector2(585, 326)
 texture = ExtResource("8_6jtlg")
+
+[node name="Title2" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.103299
+anchor_top = 0.0509259
+anchor_right = 0.881944
+anchor_bottom = 0.208333
+offset_left = 27.0
+offset_top = -18.0
+offset_right = 27.0
+offset_bottom = 168.0
+text = "HILL"
+label_settings = SubResource("LabelSettings_gja7f")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.103299
+anchor_top = 0.0509259
+anchor_right = 0.881944
+anchor_bottom = 0.208333
+text = "WATER ON THE"
+label_settings = SubResource("LabelSettings_ki271")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MM_Player" parent="." instance=ExtResource("11_pr3x2")]
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Button_Play" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Button_Tutorial" to="." method="_on_button_tutorial_pressed"]

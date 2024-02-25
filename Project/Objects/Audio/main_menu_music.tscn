@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjqsbxlaprprq"]
+
+[ext_resource type="AudioStream" uid="uid://bs1oua3e7i5ie" path="res://Audio/Music/cards_main.mp3" id="1_1cpcf"]
+
+[node name="MM_Player" type="AudioStreamPlayer"]
+stream = ExtResource("1_1cpcf")
+autoplay = true

@@ -14,6 +14,8 @@ func _on_button_play_pressed():
 func _on_button_tutorial_pressed():
 	$CanvasLayer/MarginContainer/VBoxContainer.visible = false
 	$CanvasLayer/MarginContainer/VBoxContainer2.visible = true
+	$CanvasLayer/Title.visible = false
+	$CanvasLayer/Title2.visible = false
 	$CanvasLayer/MarginContainer/VBoxContainer2/tutorial_image/Sprite2D.texture = load("res://Sprites/Cursor_Beta.png")
 	$CanvasLayer/MarginContainer/VBoxContainer2/tutorial_image/Sprite2D.visible = true
 	$CanvasLayer/MarginContainer/VBoxContainer2/Return.grab_focus()
@@ -25,5 +27,7 @@ func _on_button_exit_pressed():
 func _on_return_pressed():
 	$CanvasLayer/MarginContainer/VBoxContainer.visible = true
 	$CanvasLayer/MarginContainer/VBoxContainer2.visible = false
+	$CanvasLayer/Title.visible = true
+	$CanvasLayer/Title2.visible = true
 	$CanvasLayer/MarginContainer/VBoxContainer2/tutorial_image/Sprite2D.visible = false
 	$CanvasLayer/MarginContainer/VBoxContainer/Button_Play.grab_focus()

@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://m618hjcplygw"]
+
+[ext_resource type="FontFile" uid="uid://d4j1by40lamgr" path="res://Fonts/PixelifySans-Regular.ttf" id="1_1vnee"]
+
+[resource]
+font = ExtResource("1_1vnee")
+font_size = 100
+outline_size = 20
+outline_color = Color(0, 0, 1, 0.694118)
