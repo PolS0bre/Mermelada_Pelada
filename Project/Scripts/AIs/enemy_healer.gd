@@ -6,8 +6,9 @@ func _ready():
 	attack_points = 10
 	range_att = 250.0
 	cooldown = 1.5
-	special_cooldown = 15.0
+	special_cooldown = 10.0
 	speed = 50
+	health_bar = $ProgressBar
 
 func _physics_process(delta):
 	if objective == null:
@@ -43,17 +44,22 @@ func _follow():
 func special_attack():
 	if(team_array.size() > 1):
 		for teammates in team_array:
-			teammates.get_damage(-attack_points * 2)
+			if teammates != null:
+				teammates.get_damage(-attack_points * 2)
+				if teammates.health_points > teammates.max_hp:
+					teammates.health_points = teammates.max_hp
 	else:
 		health_points += 20
+		if health_points > max_hp:
+			health_points > max_hp
 	
-	special_cooldown = 15.0
+	special_cooldown = 10.0
 
 func attack():
-	if objective != null:
-		objective.get_damage(attack_points)
+	objective.get_damage(attack_points)
 	#critico
+	
+	if objective != null:
 		if randi_range(0, 100) > 90:
-			if objective != null:
-				objective.get_damage(attack_points / 2.0)
-		cooldown = 1.5
+			objective.get_damage(attack_points / 2.0)
+	cooldown = 1.5

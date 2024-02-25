@@ -16,7 +16,7 @@ func _on_button_tutorial_pressed():
 	$CanvasLayer/MarginContainer/VBoxContainer2.visible = true
 	$CanvasLayer/Title.visible = false
 	$CanvasLayer/Title2.visible = false
-	$CanvasLayer/MarginContainer/VBoxContainer2/tutorial_image/Sprite2D.texture = load("res://Sprites/Cursor_Beta.png")
+	$CanvasLayer/MarginContainer/VBoxContainer2/tutorial_image/Sprite2D.texture = load("res://Sprites/Menu/CardMode_Tutorial.png")
 	$CanvasLayer/MarginContainer/VBoxContainer2/tutorial_image/Sprite2D.visible = true
 	$CanvasLayer/MarginContainer/VBoxContainer2/Return.grab_focus()
 

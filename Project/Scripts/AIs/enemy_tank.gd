@@ -1,13 +1,14 @@
 extends EnemyAI
 
 func _ready():
-	health_points = 200
-	max_hp = 200
-	attack_points = 20
+	health_points = 150
+	max_hp = 150
+	attack_points = 16
 	range_att = 85.0
 	cooldown = 1.5
-	special_cooldown = 15.0
+	special_cooldown = 10.0
 	speed = 50
+	health_bar = $ProgressBar
 
 func _physics_process(delta):
 	if objective == null:
@@ -43,16 +44,17 @@ func _follow():
 func special_attack():
 	objective.get_damage(attack_points * 3)
 	#critico
-	if randi_range(0, 100) > 90:
-		objective.get_damage(attack_points / 2.0)
-	special_cooldown = 15.0
+	if objective != null:
+		if randi_range(0, 100) > 90:
+			objective.get_damage(attack_points / 2.0)
+	special_cooldown = 10.0
 
 func attack():
-	if objective != null:
-		objective.get_damage(attack_points)
+	objective.get_damage(attack_points)
 	#critico
+	
+	if objective != null:
 		if randi_range(0, 100) > 90:
-			if objective != null:
-				objective.get_damage(attack_points / 2.0)
+			objective.get_damage(attack_points / 2.0)
 		cooldown = 1.5
 

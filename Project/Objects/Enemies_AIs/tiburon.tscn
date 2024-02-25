@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://r6vx2nlatiue"]
+[gd_scene load_steps=8 format=3 uid="uid://r6vx2nlatiue"]
 
 [ext_resource type="Script" path="res://Scripts/AIs/enemy_speedster.gd" id="1_bff2y"]
 [ext_resource type="Texture2D" uid="uid://digbpu8vnj73o" path="res://Sprites/Enemies/Tiburon/Tiburon_Idle.png" id="2_utrcv"]
 [ext_resource type="AnimationLibrary" uid="uid://ccsc2drn1i6oo" path="res://Animations/Animations.res" id="3_om7nm"]
+[ext_resource type="Theme" uid="uid://d3jcbxv5euy7k" path="res://Labels/healthbar_theme.tres" id="4_0ajdx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmkr6"]
 
@@ -70,3 +71,13 @@ libraries = {
 "": SubResource("AnimationLibrary_85esh"),
 "Animations": ExtResource("3_om7nm")
 }
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -26.5
+offset_top = -26.0
+offset_right = 26.5
+offset_bottom = -18.0
+theme = ExtResource("4_0ajdx")
+step = 1.0
+value = 100.0
+show_percentage = false

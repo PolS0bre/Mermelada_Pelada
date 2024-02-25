@@ -6,8 +6,9 @@ func _ready():
 	attack_points = 12
 	range_att = 200.0
 	cooldown = 1.5
-	special_cooldown = 15.0
+	special_cooldown = 10.0
 	speed = 75
+	health_bar = $ProgressBar
 
 
 func _physics_process(delta):
@@ -45,13 +46,12 @@ func _follow():
 func special_attack():
 	for enemy in enemies:
 		enemy.get_damage(attack_points * 1.5)
-	special_cooldown = 15.0
+	special_cooldown = 10.0
 
 func attack():
-	if objective != null:
-		objective.get_damage(attack_points)
+	objective.get_damage(attack_points)
 	#critico
+	if objective != null:
 		if randi_range(0, 100) > 90:
-			if objective != null:
-				objective.get_damage(attack_points / 2.0)
-		cooldown = 1.5
+			objective.get_damage(attack_points / 2.0)
+	cooldown = 1.5

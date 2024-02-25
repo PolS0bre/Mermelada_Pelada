@@ -3,11 +3,12 @@ extends EnemyAI
 func _ready():
 	health_points = 100
 	max_hp = 100
-	attack_points = 10
+	attack_points = 15
 	range_att = 75.0
 	cooldown = 0.75
-	special_cooldown = 15.0
+	special_cooldown = 10.0
 	speed = 120
+	health_bar = $ProgressBar
 
 func _physics_process(delta):
 	if objective == null:
@@ -44,19 +45,20 @@ func _follow():
 func special_attack():
 	objective.get_damage(attack_points * 2)
 	#critico
-	if randi_range(0, 100) > 90:
-		objective.get_damage(attack_points / 2.0)
+	if objective != null:
+		if randi_range(0, 100) > 90:
+			objective.get_damage(attack_points / 2.0)
 	
 	if objective != null:
-		velocity = position.direction_to(objective.position) * speed
+		print("Ultimate Shark")
+		velocity = position.direction_to(objective.position) * speed * 5
 	
-	special_cooldown = 15.0
+	special_cooldown = 10.0
 
 func attack():
-	if objective != null:
-		objective.get_damage(attack_points)
+	objective.get_damage(attack_points)
 	#critico
+	if objective != null:
 		if randi_range(0, 100) > 90:
-			if objective != null:
-				objective.get_damage(attack_points / 2.0)
-		cooldown = 1.5
+			objective.get_damage(attack_points / 2.0)
+	cooldown = 1.5

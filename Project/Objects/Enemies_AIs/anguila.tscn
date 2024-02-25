@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ivabnrc3qq0f"]
+[gd_scene load_steps=9 format=3 uid="uid://ivabnrc3qq0f"]
 
 [ext_resource type="Script" path="res://Scripts/AIs/enemy_mage.gd" id="1_unftf"]
 [ext_resource type="Texture2D" uid="uid://c4rq08q7fbm4s" path="res://Sprites/Enemies/Anguila/Anguila_Idle.png" id="2_1opxs"]
 [ext_resource type="Texture2D" uid="uid://cxev6o3fahwpa" path="res://Sprites/Enemies/Pez Luz/PezLuz_Idle.png" id="2_58o4y"]
 [ext_resource type="AnimationLibrary" uid="uid://ccsc2drn1i6oo" path="res://Animations/Animations.res" id="3_7yxoh"]
+[ext_resource type="Theme" uid="uid://d3jcbxv5euy7k" path="res://Labels/healthbar_theme.tres" id="5_rvc83"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ah1tv"]
 size = Vector2(88, 23.3333)
@@ -108,3 +109,14 @@ libraries = {
 "": SubResource("AnimationLibrary_310ll"),
 "Animations": ExtResource("3_7yxoh")
 }
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -50.0
+offset_top = -52.0
+offset_right = 52.0
+offset_bottom = -38.0
+theme = ExtResource("5_rvc83")
+max_value = 120.0
+step = 1.0
+value = 120.0
+show_percentage = false

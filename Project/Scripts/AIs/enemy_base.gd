@@ -19,6 +19,7 @@ var team_enemies_pos = []
 var objective
 
 @onready var SFX_Audio = $"../../SFX"
+var health_bar
 
 func _physics_process(delta):
 	pass
@@ -37,6 +38,7 @@ func special_attack():
 
 func get_damage(damage : float):
 	health_points -= damage
+	health_bar.value = health_points
 	if health_points <= 0:
 		for enemy in enemies:
 			enemy.enemies.pop_at(enemy.enemies.find($"."))
@@ -59,7 +61,6 @@ func get_damage(damage : float):
 
 func _difference_teams():
 	enemies = get_tree().get_nodes_in_group("Enemy")
-	
 	for enemy in enemies:
 		if enemy.team == team:
 			var index = enemies.find(enemy)

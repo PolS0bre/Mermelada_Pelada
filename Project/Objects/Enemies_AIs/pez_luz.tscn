@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0s40yoku2mp7"]
+[gd_scene load_steps=8 format=3 uid="uid://b0s40yoku2mp7"]
 
 [ext_resource type="Script" path="res://Scripts/AIs/enemy_healer.gd" id="1_is5y4"]
 [ext_resource type="Texture2D" uid="uid://cxev6o3fahwpa" path="res://Sprites/Enemies/Pez Luz/PezLuz_Idle.png" id="2_3f0sv"]
 [ext_resource type="AnimationLibrary" uid="uid://ccsc2drn1i6oo" path="res://Animations/Animations.res" id="3_6hma6"]
+[ext_resource type="Theme" uid="uid://d3jcbxv5euy7k" path="res://Labels/healthbar_theme.tres" id="4_ctwbe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tlv"]
 size = Vector2(40, 45.3333)
@@ -71,3 +72,14 @@ libraries = {
 "": SubResource("AnimationLibrary_310ll"),
 "Animations": ExtResource("3_6hma6")
 }
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -50.0
+offset_top = -52.0
+offset_right = 52.0
+offset_bottom = -38.0
+theme = ExtResource("4_ctwbe")
+max_value = 120.0
+step = 1.0
+value = 120.0
+show_percentage = false

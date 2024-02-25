@@ -54,8 +54,15 @@ func _ready():
 	if dualshocks.size() == 2:
 		P1 = dualshocks[0]
 		P2 = dualshocks[1]
+	else:
+		show_errorJoys()
+	
 	_ChangeCardSprite()
 
+func show_errorJoys():
+	$"../UI_Cards/Label".visible = true
+	await get_tree().create_timer(3.5).timeout
+	get_tree().change_scene_to_file("res://Scenes/main_manu.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -127,7 +134,6 @@ func check_cursor_limits():
 
 # Cambia la textura a cada una de las cartas de los jugadores
 func _ChangeCardSprite():
-	print(deckJ1)
 	$"../0".texture = load(spritesCards[deckJ1[0]])
 	$"../1".texture = load(spritesCards[deckJ1[1]])
 	$"../2".texture = load(spritesCards[deckJ1[2]])
@@ -138,7 +144,6 @@ func _ChangeCardSprite():
 		$"../3".visible = false
 		$"../4".visible = false
 	
-	print(deckJ2)
 	$"../5".texture = load(spritesCards[deckJ2[0]])
 	$"../6".texture = load(spritesCards[deckJ2[1]])
 	$"../7".texture = load(spritesCards[deckJ2[2]])

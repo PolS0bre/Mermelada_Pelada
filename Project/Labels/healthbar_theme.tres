@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://d3jcbxv5euy7k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbicr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rm3aa"]
+bg_color = Color(1, 0.00784314, 0.00784314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[resource]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_qbicr")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_rm3aa")

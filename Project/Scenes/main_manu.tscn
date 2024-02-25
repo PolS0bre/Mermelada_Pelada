@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://btvvfcc0yfk4m" path="res://Sprites/Menu/btnHover.png" id="4_2ngwm"]
 [ext_resource type="Script" path="res://Scripts/tutorial_image.gd" id="4_3fh4a"]
 [ext_resource type="FontFile" uid="uid://d4j1by40lamgr" path="res://Fonts/PixelifySans-Regular.ttf" id="6_rndj8"]
-[ext_resource type="Texture2D" uid="uid://clxui0inx61q1" path="res://icon.svg" id="8_6jtlg"]
+[ext_resource type="Texture2D" uid="uid://bvtpnt6jvinx" path="res://Sprites/Menu/CardMode_Tutorial.png" id="9_e3p62"]
 [ext_resource type="FontFile" uid="uid://bkjp1f6o8ljdm" path="res://Fonts/LIBRIT__.ttf" id="10_fgo0a"]
 [ext_resource type="PackedScene" uid="uid://cjqsbxlaprprq" path="res://Objects/Audio/main_menu_music.tscn" id="11_pr3x2"]
 
@@ -179,8 +179,9 @@ frame = 7
 script = ExtResource("4_3fh4a")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MarginContainer/VBoxContainer2/tutorial_image"]
-position = Vector2(585, 326)
-texture = ExtResource("8_6jtlg")
+position = Vector2(566, 309)
+scale = Vector2(0.489155, 0.454914)
+texture = ExtResource("9_e3p62")
 
 [node name="Title2" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
